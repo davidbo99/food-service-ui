@@ -1,0 +1,6 @@
+recomendacion de comando.
+
+-ubicar un componente dentro de la carpeta de components:
+ng g c components/nombreComponente --skip-tests
+
+

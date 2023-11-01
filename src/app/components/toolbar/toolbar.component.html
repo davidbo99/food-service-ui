@@ -1,0 +1,27 @@
+<div class="navbar">
+    <a class="navbar__logo" routerLink="">Integrador</a>
+    <mat-icon (click)="toggleNav()" class="navbar__abrir-menu">menu</mat-icon>
+    <nav class="navbar__nav" [ngClass]="{'navbar__nav--visible': isNavVisible}">
+      <mat-icon (click)="toggleNav()" aria-hidden="false" fontIcon="close"></mat-icon>
+      <ul class="navbar__nav-list">
+        <li class="navbar__nav-list__item">
+            <a routerLink="">
+                <img class="navbar__nav-list__item__icon" src="../../../assets/img/food.png" alt="Icono" />
+                endpoint 1
+            </a>
+        </li>
+        <li class="navbar__nav-list__item">
+            <a routerLink="">
+                <img class="navbar__nav-list__item__icon" src="../../../assets/img/food.png" alt="Icono" />
+                endpoint 2
+            </a>
+        </li>
+        <li class="navbar__nav-list__item">
+            <a routerLink="">
+                <img class="navbar__nav-list__item__icon" src="../../../assets/img/food.png" alt="Icono" />
+                endpoint 3
+            </a>
+        </li>
+      </ul>
+    </nav>
+</div>

@@ -1,0 +1,16 @@
+Anotaciones sobre este core:
+
+En este directorio se harán las importaciones globales del proyecto y la creacion de los servicios. Se implementó angular material y Bootstrap para la creacion de la interfaz. Cabe acalarar que el uso de Bootstrap es completamente opcional.
+
+documentacion:
+
+-Angular material:
+ https://material.angular.io/components/categories
+
+- Bootstrap:
+ * Docs: https://getbootstrap.com/docs/5.3/getting-started/introduction
+ * Icons: https://icons.getbootstrap.com
+
+- Para crear servicios en la carpeta services:
+ng g s core/services/nombreServicio
+
