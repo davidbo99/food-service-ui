@@ -25,9 +25,6 @@ onAddToShoppingList() {
   this.recipeService.addIngredientsToShopList(this.recipe.ingredients);
 }
 
- showDetails() {
- /*  this.rlc.onSelected(); */
-  console.log("En showDetails RecipeDetail: ",this.rlc.resultadosRecetas);
-} 
+ 
 
 }

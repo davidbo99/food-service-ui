@@ -22,39 +22,28 @@
   <div class="row">
     <div class="col">
       <h2>Recipe Likes: {{ mostrar.likes }}</h2>
-       <pre>Contenido: {{ mostrar | json }}</pre> 
     </div>
   </div>
-</div>
-  <!-- descripción de la receta -->
- 
-  <!-- <div class="list-group">
-    <div *ngIf="shDetail | async">
-      <pre>{{ shDetail | json }}</pre>
-      <li
-        class="list-group-item list-group-item-action"
-        *ngFor="let ingredient of shDetail | async"
-      >
-        <h4 class="list-group-item-heading">
-          <h5>{{ ingredient.usedIngredients.name }}</h5>
-          <h5>({{ ingredient.usedIngredients.amount }} -> {{ ingredient.usedIngredients.unit }})</h5>
-          <pre>{{ ingredient | json }}</pre>
-        </h4>
-      </li>
-    </div>
-  </div> -->
-  <h2>Recipe Description</h2>
-  <div class="details" *ngIf="shDetail | async as detail">
-    <div class="details" *ngFor="let mostrar of detail.usedIngredients| async">
-      <!-- nombre de la receta -->
+
+  <!-- ingredients -->
+   <div class="details" *ngFor="let details of mostrar.usedIngredients"> 
       <div class="row">
         <div class="col">
-          <h2>Recipe Ingredients: {{ mostrar.aisle  }}</h2>
-          <pre>{{ mostrar | json }}</pre>
+          <h2>Ingredients:</h2>
+          <h2>Id: {{ mostrar.id }}</h2>
+          <h2>Name: {{ details.name  }}</h2>
+          <h2>Amount: {{ details.amount  }}</h2>
+          <h2>Unit: {{ details.unit  }}</h2>
+          <h2>Aisle: {{ details.aisle  }}</h2>
+          <h2>Original: {{ details.original  }}</h2>
         </div>
       </div>
-    </div>
-  </div>
+    </div> 
+</div>
+
+  
+ 
+  
   <!--
 Este es el componente que contendrá la información de la receta que seleccionemos de la lista 
 de recetas (todavía estática) que acabamos de construir. Esos detalles de la receta se

@@ -1,5 +1,5 @@
 import { Component, Renderer2  } from '@angular/core';
-import { Personas } from 'src/app/core/personas';
+
 
 @Component({
   selector: 'app-home',

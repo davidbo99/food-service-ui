@@ -12,7 +12,7 @@ import { RecipeService } from '../recipe.service';
 export class RecipeListComponent implements OnInit 
 {
   @Output() recipeSelected = new EventEmitter<RecipeListComponent>();
-  @Output() wSelected = new EventEmitter<RecipeListComponent>();
+ 
   /* arreglo del tipo Modelo Recipe donde se encuentran los elementos de la receta */
   /* contenido estático dentro del arreglo*/
 recipes: Recipe[] | undefined; 
