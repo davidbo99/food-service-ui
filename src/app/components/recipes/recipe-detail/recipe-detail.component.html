@@ -1,0 +1,71 @@
+<div class="details" *ngFor="let mostrar of shDetail | async">
+  <!-- nombre de la receta -->
+  <div class="row">
+    <div class="col">
+      <h2>Recipe Title: {{ mostrar.title }}</h2>
+    </div>
+  </div>
+
+  <!-- imágen de la receta -->
+  <div class="row">
+    <div class="col">
+      <img
+        [src]="mostrar.image"
+        alt="{{ mostrar.image }}"
+        class="img-responsive"
+        style="max-height: 300px"
+      />
+    </div>
+  </div>
+
+  <!-- likes de la receta -->
+  <div class="row">
+    <div class="col">
+      <h2>Recipe Likes: {{ mostrar.likes }}</h2>
+       <pre>Contenido: {{ mostrar | json }}</pre> 
+    </div>
+  </div>
+</div>
+  <!-- descripción de la receta -->
+ 
+  <!-- <div class="list-group">
+    <div *ngIf="shDetail | async">
+      <pre>{{ shDetail | json }}</pre>
+      <li
+        class="list-group-item list-group-item-action"
+        *ngFor="let ingredient of shDetail | async"
+      >
+        <h4 class="list-group-item-heading">
+          <h5>{{ ingredient.usedIngredients.name }}</h5>
+          <h5>({{ ingredient.usedIngredients.amount }} -> {{ ingredient.usedIngredients.unit }})</h5>
+          <pre>{{ ingredient | json }}</pre>
+        </h4>
+      </li>
+    </div>
+  </div> -->
+  <h2>Recipe Description</h2>
+  <div class="details" *ngIf="shDetail | async as detail">
+    <div class="details" *ngFor="let mostrar of detail.usedIngredients| async">
+      <!-- nombre de la receta -->
+      <div class="row">
+        <div class="col">
+          <h2>Recipe Ingredients: {{ mostrar.aisle  }}</h2>
+          <pre>{{ mostrar | json }}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--
+Este es el componente que contendrá la información de la receta que seleccionemos de la lista 
+de recetas (todavía estática) que acabamos de construir. Esos detalles de la receta se
+mostrarán a la derecha de la pantalla, así se configuro en el componente RecipesComponent
+la imagen de la receta
+el nombre de la receta
+botones para interactuar con la receta (añadiremos un dropdown pero por el momento no funcionará)
+la descripción completa de la receta
+los ingredientes de la receta
+  -->
+  <!-- Construimos la lista con un ngFor, iterando a lo largo de los ingredientes que 
+    acabamos de añadir. Usamos string interpolation para añadir el nombre del ingrediente 
+    y la cantidad. -->
+

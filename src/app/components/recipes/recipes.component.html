@@ -1,0 +1,25 @@
+<div class="row">
+  <!-- Lista de recetas a la izquierda -->
+  <div class="col-md-5">
+      <app-recipe-list > </app-recipe-list>
+  </div>
+
+  <!-- Detalles de la receta a la derecha -->
+  <div class="col-md-7">
+    <app-recipe-detail *ngIf="selectedRecipe; else infoText" [recipe]="selectedRecipe">
+    </app-recipe-detail>
+
+    <!-- referencia local #infoText para la ng-template -->
+    <ng-template #infoText>
+      <p class="mt-5">Please select a recipe!</p>
+    </ng-template>
+  </div>
+</div>
+
+<!-- Estructura de filas y columnas con Bootstrap
+  colocar los componentes recip-list y recipe-detail uno al alado del otro 
+  $event es una palabra clave que nos permite extraer información del evento al que esté vinculada-->
+<!-- ng-template directiva que se utiliza para crear plantillas reutilizables en las aplicaciones. 
+  Estas plantillas se definen en el código HTML y pueden ser utilizadas para renderizar 
+  contenido de manera condicional o repetitiva. -->
+ 

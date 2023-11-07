@@ -1,0 +1,45 @@
+ 
+<!-- el contenido de la receta individual pasa al recipe-item.component.html-->
+<!-- Agregar selector recipe-item -->
+<!-- <app-recipe-item *ngFor="let recipeEle of recipes" [recipe]="recipeEle">
+</app-recipe-item> -->
+
+
+<div class="row">
+  <div class="col">
+    <input type="text" [(ngModel)]="qry" placeholder="Enter Ingredients">
+     <button class="btn btn-success my-3" (click)="buscarRecetas(qry)">Search Recipe</button> 
+  </div>
+</div>
+
+<div class="list-group"  *ngFor="let receta of resultadosRecetas; let ind=index">
+  <!-- (click)="onSelected()" inicia el proceso de mostrar los detalles de una receta de la lista -->
+  <a href="#" class="list-group-item list-group-item-action d-flex" (click)="onSelected()"> 
+    <div>
+      <h4 class="list-group-item-heading">Recipe Title: {{receta.title}}  </h4>  <!-- cambia dinámicamente -->
+      <p class="list-group-item-text">Id_Recipe: {{receta.id}} </p>  <!-- cambia dinámicamente -->
+    </div>
+    
+    <span class="ml-auto my-auto">
+      <img [src]="receta.image" alt="{{receta.image}}" class="img-responsive"
+            style="max-height: 70px;">
+    </span>
+   </a> 
+</div>
+
+<!-- <div *ngIf="resultadosRecetas">
+  <h2>Recipe Results:</h2>
+  <ul>
+    <li *ngFor="let receta of resultadosRecetas">
+      <p> Id_Recipe: {{ receta.id }}</p>
+      <p>Recipe Title:{{ receta.title }}</p>
+      <p> Url Image: {{ receta.image }} </p>
+      <p>Likes: {{ receta.likes }}</p>
+      <pre>Contenido: {{ receta |json }}</pre>
+    </li>
+  </ul>
+</div>  -->
+
+
+
+

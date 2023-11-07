@@ -1,3 +1,24 @@
 <app-toolbar></app-toolbar>
-<router-outlet></router-outlet>
+<!-- Agregar el header al componente -->
+<!-- vincular nuestro custom event (navbarItemSelected) a la función onNavigate que gestionará 
+qué hacer cuando se haga click en recipes o en shopping list. -->
+<!-- Necesitaremos la información que nos llegue desde el evento navbarItemSelected en el header. 
+  Para capturar dicha información, usaremos el $event, pasado por parámetro al método 
+  onNavigate.  
+$event es una palabra clave que nos permite extraer información del evento al que esté vinculada. -->
+  <app-header (navbarItemSelected)="onNavigate($event)"></app-header>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <!-- Se agregan los selectores recipes y shoppinglist. 
+        Se valida el elemento a mostrar en RecipesComponent -->
+        <app-recipes *ngIf="loadedNavbarItem === 'recipes'"></app-recipes>
+        <app-shopping-list *ngIf="loadedNavbarItem !== 'recipes'"></app-shopping-list>
+      </div>
+    </div>
+  </div>
+
+<!-- <router-outlet></router-outlet> -->
 <app-footer></app-footer>
