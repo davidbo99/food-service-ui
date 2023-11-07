@@ -7,14 +7,13 @@ import { Personas } from 'src/app/core/personas';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-
   personas =  [...Personas]
   
   constructor(private renderer: Renderer2) {}
   //funcion para fondo de imagen en el home
   ngOnInit() {
     this.renderer.addClass(document.body, 'background-class');
-    document.body.style.backgroundImage = 'url(../../../assets/img/fhome.jpg)'
+    document.body.style.backgroundImage = 'url(../../../../../assets/img/fhome.jpg)'
     document.body.style.backgroundSize = 'cover';
     document.body.style.backgroundRepeat = 'repeat';
     document.body.style.backgroundPosition = 'center';
