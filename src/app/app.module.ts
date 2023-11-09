@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MaterialModule } from './core/material/material.module';
 import {HttpClientModule} from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import {NgxPaginationModule} from 'ngx-pagination';
 import { environment } from '../environments/env';
 // Componentes
 import { AppRoutingModule } from './app-routing.module';
@@ -31,7 +32,8 @@ import { RecipeService } from './recipe.service';
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    NgxPaginationModule
   ],
   providers: [
     RecipeService

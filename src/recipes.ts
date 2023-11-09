@@ -6,6 +6,6 @@ export interface Recipe {
 }
 
 //Defino la respuesta obtenida de la API contenido en un array(varias recetas)
-// export interface APIResponse {
-//   results: Recipe[];  
-// }
+export interface APIResponse {
+  results: Recipe[];  
+}

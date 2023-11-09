@@ -1,6 +1,6 @@
 import { Component, Renderer2 } from '@angular/core';
 import { RecipeService } from 'src/app/recipe.service';
-import {  Recipe } from 'src/recipes';
+import {  APIResponse, Recipe } from 'src/recipes';
 
 @Component({
   selector: 'app-recipe-list',
@@ -10,10 +10,10 @@ import {  Recipe } from 'src/recipes';
 export class RecipeListComponent {
   
   //Definición de recipes
-  recipes: any[] = [];
+  //recipes: any[] = [];
 
   //Definición de recipes para obtener datos desde el endpoint.
-  //recipes: Recipe[] = [];
+  recipes: Recipe[] = [];
   constructor(private recipeService: RecipeService,private renderer: Renderer2) { }
 
   ngOnInit() {
@@ -30,28 +30,29 @@ export class RecipeListComponent {
   }
 
   //Funciòn para obtener recetas conectándose al endpoint
-  // getAllRecipes() {
-  //   this.recipeService.getAllRecipes()
-  //     .subscribe({
-  //       next: (recipes: APIResponse) => {
-  //         console.log('Recibo datos del servicio:', recipes);
-  //         this.recipes = recipes.results;
-  //       },
-  //       error: (error) => {
-  //         console.error('Error:', error);
-  //       }
-  //     });
-  // }
+  getAllRecipes() {
+    this.recipeService.getAllRecipes()
+      .subscribe({
+        next: (response: APIResponse) => {
+          console.log('Recibo datos del servicio:', response);
+          this.recipes = response.results;
+          console.log(response)
+        },
+        error: (error) => {
+          console.error('Error:', error);
+        }
+      });
+  }
 
   //Llamada a getAllRecipes desde el servicio para obtener un arreglo de recetas Recipe[]
   //Y asignándola a la variable recipes.
-   getAllRecipes(){
-    this.recipeService.getAllRecipes()
-    .subscribe(
-      (recipes: Recipe[]) => {
-        this.recipes = recipes;
-      }  
-    );
-  }
+  //  getAllRecipes(){
+  //   this.recipeService.getAllRecipes()
+  //   .subscribe(
+  //     (recipes: Recipe[]) => {
+  //       this.recipes = recipes;
+  //     }  
+  //   );
+  // }
   
 }
