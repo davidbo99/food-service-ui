@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2  } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environments';
 
 @Component({
   selector: 'app-random',
@@ -7,12 +8,23 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./random.component.scss']
 })
 export class RandomComponent {
+  conection = environment.apiUrl;
   randomRecipe: any = {};
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private renderer: Renderer2 ) {}
+
+  ngOnInit() {
+    this.renderer.addClass(document.body, 'background-class');
+    document.body.style.backgroundImage = 'url(../../../../../assets/img/frandom.avif)'
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundRepeat = 'repeat';
+    document.body.style.backgroundPosition = 'center';
+    document.body.style.height = '600px';
+    document.body.style.width = '100%';
+  }
 
   fetchRandomRecipe() {
-    this.http.get('http://127.0.0.1:8000/random_recipes/random_recipes/').subscribe(
+    this.http.get(this.conection).subscribe(
       (data: any) => {
         this.displayRecipe(data);
       },
