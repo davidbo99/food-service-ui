@@ -1,0 +1,21 @@
+<button id="btnn" class="button" (click)="fetchRandomRecipe()">Obtener Receta Aleatoria</button>
+<div class="random-recipe">
+  <div *ngIf="randomRecipe.recipes && randomRecipe.recipes.length > 0" class="random-recipe__details">
+    <h2 class="random-recipe__title">{{ randomRecipe.recipes[0].title }}</h2>
+    <img [src]="randomRecipe.recipes[0].image" alt="Imagen de la receta" class="random-recipe__image">
+    <p [innerHTML]="randomRecipe.recipes[0].summary" class="random-recipe__summary"></p>
+    <h3 class="random-recipe__ingredients-title">Ingredientes:</h3>
+    <ul class="random-recipe__ingredients-list">
+      <li *ngFor="let ingredient of randomRecipe.recipes[0].extendedIngredients" class="random-recipe__ingredient">
+        {{ ingredient.original }}
+      </li>
+    </ul>
+    <h3 class="random-recipe__instructions-title">Instrucciones:</h3>
+    <p [innerHTML]="randomRecipe.recipes[0].instructions" class="random-recipe__instructions"></p>
+  </div>
+
+  <!-- Mostrar un mensaje si no se ha cargado ninguna receta aleatoria -->
+  <div *ngIf="randomRecipe.recipes && randomRecipe.recipes.length === 0" class="random-recipe__no-recipe">
+    <p>No se ha cargado ninguna receta aleatoria</p>
+  </div>
+</div>
