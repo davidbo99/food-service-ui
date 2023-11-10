@@ -1,4 +1,4 @@
-import { Component, Renderer2 } from '@angular/core';
+import { Component, EventEmitter, Output, Renderer2 } from '@angular/core';
 import { RecipeService } from 'src/app/recipe.service';
 import {  APIResponse, Recipe } from 'src/recipes';
 
@@ -8,29 +8,35 @@ import {  APIResponse, Recipe } from 'src/recipes';
   styleUrls: ['./recipe-list.component.scss']
 })
 export class RecipeListComponent {
+  recipes: Recipe[] | undefined; 
+  resultadosRecetas: any;
+  qry: string = "";
+  @Output() recipeSelected = new EventEmitter<RecipeListComponent>();
+
+
   
   //Definición de recipes
   //recipes: any[] = [];
 
   //Definición de recipes para obtener datos desde el endpoint.
-  recipes: Recipe[] = [];
+  //recipes: Recipe[] = [];
   constructor(private recipeService: RecipeService,private renderer: Renderer2) { }
 
   ngOnInit() {
-    this.getAllRecipes(); 
+    //this.getAllRecipes(); 
     
     //implementación de elemento DOM en Angular para agregar background.
-    this.renderer.addClass(document.body, 'background-class');
+    /* this.renderer.addClass(document.body, 'background-class');
     document.body.style.backgroundImage = 'url(../../../assets/img/fhome.jpg)'
     document.body.style.backgroundSize = 'cover';
     document.body.style.backgroundRepeat = 'repeat';
     document.body.style.backgroundPosition = 'center';
     document.body.style.height = '600px';
-    document.body.style.width = '100%';
+    document.body.style.width = '100%'; */
   }
 
   //Funciòn para obtener recetas conectándose al endpoint
-  getAllRecipes() {
+  /* getAllRecipes() {
     this.recipeService.getAllRecipes()
       .subscribe({
         next: (response: APIResponse) => {
@@ -42,7 +48,8 @@ export class RecipeListComponent {
           console.error('Error:', error);
         }
       });
-  }
+     
+  } */
 
   //Llamada a getAllRecipes desde el servicio para obtener un arreglo de recetas Recipe[]
   //Y asignándola a la variable recipes.
@@ -55,4 +62,24 @@ export class RecipeListComponent {
   //   );
   // }
   
+    /* Muestra la lista de recetas devueltas por la api */
+  
+    buscarRecetas(query: string) 
+{
+    this.recipeService.getRecipes2(query)
+    .subscribe(data => {
+      this.resultadosRecetas = data;
+      console.log("Mostrar: ",this.resultadosRecetas);
+    });
 }
+   
+   onSelected() 
+{
+    this.recipeService.recipeSelected.emit(this.resultadosRecetas); 
+    console.log("En onSelected RecipeList: ",this.resultadosRecetas);
+}
+
+  
+
+}
+  

@@ -14,6 +14,7 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { RecipeListComponent } from './components/recipes/recipe-list/recipe-list.component';
+import { FormsModule } from '@angular/forms';
 
 //Servicios
 import { RecipeService } from './recipe.service';
@@ -33,7 +34,8 @@ import { RecipeService } from './recipe.service';
     MaterialModule,
     HttpClientModule,
     FlexLayoutModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    FormsModule,
   ],
   providers: [
     RecipeService
