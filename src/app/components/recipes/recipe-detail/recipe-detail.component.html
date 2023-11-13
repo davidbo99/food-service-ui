@@ -1,0 +1,16 @@
+<div class="detail_recipe" *ngIf="selectedRecipe">
+  <!-- Nombre e ID de la receta -->
+  <h2 class="detail_recipe__title">{{ selectedRecipe.title }}</h2>
+  <!-- Imagen de la receta -->
+  <img [src]="selectedRecipe.image" alt="{{ selectedRecipe.image }}" class="detail_recipe__image;img-responsive" style="max-height: 300px;">
+  <h2 class="detail_recipe__title"><b>Recipe Id:</b> {{ selectedRecipe.id }}</h2>
+  <h2 class="detail_recipe__title"><b>Dairy Free:</b> {{ selectedRecipe.dairyFree }}</h2>
+  <h2 class="detail_recipe__title"><b>Gluten Free:</b> {{ selectedRecipe.glutenFree }}</h2>
+  <h2 class="detail_recipe__title"><b>Ketogenic:</b> {{ selectedRecipe.ketogenic }}</h2>
+  <h2 class="detail_recipe__title"><b>Vegan:</b> {{ selectedRecipe.vegan }}</h2>
+  <h2 class="detail_recipe__instructions"><b>Instructions:</b> {{ selectedRecipe.instructions }}</h2>
+  
+  <!-- Ingredientes Extendidos-->
+<div *ngFor="let aisle of extendedIngredients">
+  <h2>aisle: {{ aisle }}</h2>
+</div>
