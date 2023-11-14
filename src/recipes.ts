@@ -1,11 +1,17 @@
-//Defino la estructura de un solo elemento del objeto.
+
 export interface Recipe {
-  image: string;
+  id: number;
   title: string;
-   
+  image: string;
+  dairyFree: string;
+  glutenFree:boolean;
+  ketogenic: boolean;
+  vegan : boolean;
+  instructions: string;
+  extendedIngredients: Ingredient[];
 }
 
-//Defino la respuesta obtenida de la API contenido en un array(varias recetas)
-export interface APIResponse {
-  results: Recipe[];  
+export interface Ingredient {
+  aisle: string;
+  
 }

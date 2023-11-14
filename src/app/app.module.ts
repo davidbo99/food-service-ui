@@ -5,7 +5,7 @@ import { MaterialModule } from './core/material/material.module';
 import {HttpClientModule} from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {NgxPaginationModule} from 'ngx-pagination';
-import { environment } from '../environments/env';
+
 // Componentes
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 
 //Servicios
 import { RecipeService } from './recipe.service';
+import { RecipeDetailComponent } from './components/recipes/recipe-detail/recipe-detail.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { RecipeService } from './recipe.service';
     ToolbarComponent,
     HomeComponent,
     FooterComponent,
-    RecipeListComponent
+    RecipeListComponent,
+    RecipeDetailComponent
   ],
   imports: [
     BrowserModule,

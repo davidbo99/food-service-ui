@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Output, Renderer2 } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { RecipeService } from 'src/app/recipe.service';
-import {  APIResponse, Recipe } from 'src/recipes';
+import { Recipe } from 'src/recipes';
 
 @Component({
   selector: 'app-recipe-list',
@@ -11,75 +11,44 @@ export class RecipeListComponent {
   recipes: Recipe[] | undefined; 
   resultadosRecetas: any;
   qry: string = "";
-  @Output() recipeSelected = new EventEmitter<RecipeListComponent>();
-
-
+  qry2: string = "";
+  qry3: string = "";
+  qry4: string = "";
+  qry5: string = "";
+  qry6: string = "";
+  qry7: string = "";
   
-  //Definición de recipes
-  //recipes: any[] = [];
+  constructor(private recipeService: RecipeService) { }
 
-  //Definición de recipes para obtener datos desde el endpoint.
-  //recipes: Recipe[] = [];
-  constructor(private recipeService: RecipeService,private renderer: Renderer2) { }
+  ngOnInit() { }
 
-  ngOnInit() {
-    //this.getAllRecipes(); 
-    
-    //implementación de elemento DOM en Angular para agregar background.
-    /* this.renderer.addClass(document.body, 'background-class');
-    document.body.style.backgroundImage = 'url(../../../assets/img/fhome.jpg)'
-    document.body.style.backgroundSize = 'cover';
-    document.body.style.backgroundRepeat = 'repeat';
-    document.body.style.backgroundPosition = 'center';
-    document.body.style.height = '600px';
-    document.body.style.width = '100%'; */
+  //Obtener recetas por Ingredientes
+  buscarRecetas() {
+    // Crear una lista de ingredientes a partir de las variables qry, qry2, etc., correspondientes a cada input del template.
+    const ingredients = [this.qry, this.qry2, this.qry3, this.qry4, this.qry5].filter(Boolean).join(',');
+
+    this.recipeService.getRecipesByIngredients(ingredients)
+      .subscribe(data => {
+        this.resultadosRecetas = data;
+        console.log("Mostrar: ", this.resultadosRecetas);
+      });
   }
 
-  //Funciòn para obtener recetas conectándose al endpoint
-  /* getAllRecipes() {
-    this.recipeService.getAllRecipes()
-      .subscribe({
-        next: (response: APIResponse) => {
-          console.log('Recibo datos del servicio:', response);
-          this.recipes = response.results;
-          console.log(response)
-        },
-        error: (error) => {
-          console.error('Error:', error);
-        }
+  //LLamado al método selectRecipe del servicio.
+  onSelected(selectedRecipe: Recipe) {
+    this.recipeService.selectRecipe(selectedRecipe);
+    console.log("En onSelected RecipeList: ", selectedRecipe);
+  }
+
+  //Obtener recetas por nutrientes
+  buscarNutrientes() {
+    const min_Calories = this.qry6;
+    const max_Calories = this.qry7
+    this.recipeService.getRecipesByNutrients(min_Calories, max_Calories)
+      .subscribe(data => {
+        this.resultadosRecetas = data;
+        console.log("Mostrar Nutrientes rl: ",this.resultadosRecetas);
       });
-     
-  } */
-
-  //Llamada a getAllRecipes desde el servicio para obtener un arreglo de recetas Recipe[]
-  //Y asignándola a la variable recipes.
-  //  getAllRecipes(){
-  //   this.recipeService.getAllRecipes()
-  //   .subscribe(
-  //     (recipes: Recipe[]) => {
-  //       this.recipes = recipes;
-  //     }  
-  //   );
-  // }
-  
-    /* Muestra la lista de recetas devueltas por la api */
-  
-    buscarRecetas(query: string) 
-{
-    this.recipeService.getRecipes2(query)
-    .subscribe(data => {
-      this.resultadosRecetas = data;
-      console.log("Mostrar: ",this.resultadosRecetas);
-    });
-}
-   
-   onSelected() 
-{
-    this.recipeService.recipeSelected.emit(this.resultadosRecetas); 
-    console.log("En onSelected RecipeList: ",this.resultadosRecetas);
-}
-
-  
-
+  }
 }
   

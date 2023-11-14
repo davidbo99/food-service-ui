@@ -40,3 +40,9 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+#Variables de entorno
+.env
+
+# Excluir el componente específico de Angular
+src/app/recipe-detail/
