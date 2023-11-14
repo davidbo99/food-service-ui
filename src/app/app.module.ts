@@ -18,7 +18,7 @@ import { FormsModule } from '@angular/forms';
 
 //Servicios
 import { RecipeService } from './recipe.service';
-import { RecipeDetailComponent } from './components/recipes/recipe-detail/recipe-detail.component';
+
 
 @NgModule({
   declarations: [
@@ -26,8 +26,7 @@ import { RecipeDetailComponent } from './components/recipes/recipe-detail/recipe
     ToolbarComponent,
     HomeComponent,
     FooterComponent,
-    RecipeListComponent,
-    RecipeDetailComponent
+    RecipeListComponent
   ],
   imports: [
     BrowserModule,

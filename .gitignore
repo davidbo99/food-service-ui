@@ -45,4 +45,3 @@ Thumbs.db
 .env
 
 # Excluir el componente específico de Angular
-src/app/recipe-detail/

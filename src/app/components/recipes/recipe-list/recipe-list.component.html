@@ -41,7 +41,7 @@
   <!--Recorrer listado-->
    <div class="content" >
     <div class="list-content" *ngFor="let receta of resultadosRecetas; let ind=index">
-      <a [routerLink]="['/recipe-detail']" (click)="onSelected(receta)"> 
+      <a [routerLink]="['/']" (click)="onSelected(receta)"> 
       <mat-card class="card">
         <img mat-card-image [src]="receta.image" class="" style="max-height: 80px;">
         <mat-card-header>
