@@ -1,0 +1,56 @@
+<div class="row">
+  <fieldset>
+  <div>
+    <p>Busca por Ingredientes:</p>
+  </div>
+  
+  <div class="col">
+    <input type="text" [(ngModel)]="qry" placeholder="Enter Ingredient 1">
+  </div>
+  <div div class="col">
+    <input type="text" [(ngModel)]="qry2" placeholder="Enter Ingredient 2">
+  </div>
+  <div div class="col">
+    <input type="text" [(ngModel)]="qry3" placeholder="Enter Ingredient 3">
+  </div>
+  <div div class="col">
+    <input type="text" [(ngModel)]="qry4" placeholder="Enter Ingredient 4">
+  </div>
+  <div div class="col">
+    <input type="text" [(ngModel)]="qry5" placeholder="Enter Ingredient 5">
+  </div>
+  <div div class="col">
+     <button class="button"  (click)="buscarRecetas()">Search Recipe</button> 
+  </div>
+</fieldset>
+</div>
+
+  <div class="row">
+  <fieldset>
+    <div>
+      <p>Busca por Nutrientes:</p>
+    </div>
+    <div class="col">
+      <input type="text" [(ngModel)]="qry6" placeholder="Enter Min Calories">
+      <input type="text" [(ngModel)]="qry7" placeholder="Enter Max Calories">
+       <button class="button"  (click)="buscarNutrientes()">Search Nutritions</button> 
+    </div>
+  </fieldset>
+  </div>
+  
+  <!--Recorrer listado-->
+   <div class="content" >
+    <div class="list-content" *ngFor="let receta of resultadosRecetas; let ind=index">
+      <a [routerLink]="['/recipe-detail']" (click)="onSelected(receta)"> 
+      <mat-card class="card">
+        <img mat-card-image [src]="receta.image" class="" style="max-height: 80px;">
+        <mat-card-header>
+            <mat-card-title class="card__title">{{ receta.title }}</mat-card-title>
+            <mat-card-title class="card__title">{{ receta.id }}</mat-card-title>
+          </mat-card-header>
+      </mat-card>
+    </a>
+    </div>
+  </div>
+
+  

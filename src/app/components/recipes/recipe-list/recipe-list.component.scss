@@ -1,0 +1,49 @@
+
+.content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 12px;
+    padding: 20px;
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+
+                &__title {
+                text-align: left;
+                font-size: 12px;
+                line-height: 1.2;
+                max-height: 3.6em;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: normal;
+                margin-top: 10px;
+                color: black;
+                }
+                //     &__button{
+                //     background-color: black;
+                // }
+
+                .button {
+                  border: 2px solid #333; 
+                  border-radius: 4px;
+                  padding: 10px 20px;
+                }
+                
+                .button:hover {
+                  background-color: #ddd;
+                }
+           }
+           
+           @media screen and (max-width: 1200px) {
+            grid-template-columns: repeat(2, 1fr);
+          }
+    
+          @media screen and (max-width: 900px) {
+            grid-template-columns: repeat(1, 1fr);
+          }
+    
+          
+}
